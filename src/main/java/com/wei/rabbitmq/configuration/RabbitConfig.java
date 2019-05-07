@@ -21,11 +21,13 @@ public class RabbitConfig {
         return new Queue("obj");
     }
 
-    @Bean Queue queueMessage() {
+    @Bean
+    Queue queueMessage() {
         return new Queue("topic.message");
     }
 
-    @Bean Queue queueMessages() {
+    @Bean
+    Queue queueMessages() {
         return new Queue("topic.messages");
     }
 

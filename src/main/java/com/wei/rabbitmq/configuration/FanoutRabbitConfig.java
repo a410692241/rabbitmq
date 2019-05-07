@@ -1,5 +1,6 @@
 package com.wei.rabbitmq.configuration;
 
+import com.rabbitmq.client.AMQP;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.FanoutExchange;
@@ -44,5 +45,6 @@ public class FanoutRabbitConfig {
     Binding bindingExchangeC(Queue CMessage, FanoutExchange fanoutExchange) {
         return BindingBuilder.bind(CMessage).to(fanoutExchange);
     }
+
 
 }

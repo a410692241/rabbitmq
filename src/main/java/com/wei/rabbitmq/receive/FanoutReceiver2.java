@@ -10,7 +10,7 @@ public class FanoutReceiver2 {
 
     @RabbitHandler
     public void process(String msg) {
-        System.out.println("fanout Receiverb" + msg);
+        System.out.println("fanout Receiver B" + msg);
     }
 
 }

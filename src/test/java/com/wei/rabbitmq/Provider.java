@@ -66,6 +66,12 @@ public class Provider {
         objSender.sendObj(user);
     }
 
+    /**
+     * 我已经声明了一个交换机fanoutExchange
+     * 同时有三个队列连接在此交换机上
+     * 当我对该交换机fanoutExchange发送消息时
+     * 三个队列将会接收到我发送的消息
+     */
     @Test
     public void sendMsg() {
         messageSender.send1();

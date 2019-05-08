@@ -45,6 +45,7 @@ public class Provider {
 
     /**
      * 和一对多一样,2个接收器都是均匀接收所有消息
+     * 由于每一条消息只能被一个topic消费,所以应该是2个接收器各消费50次
      */
     @Test
     public void manyToMany() {

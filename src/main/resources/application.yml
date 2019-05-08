@@ -3,7 +3,10 @@ server:
 spring:
   rabbitmq:
     port: 5672
-    host: 192.168.0.148
+    host: 192.168.0.135
     password: a1234567
     username: admin
-
+hello:
+  defaultExchange:
+  routeKey:
+  queue:

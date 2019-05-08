@@ -14,7 +14,7 @@ public class HelloSender1 {
     private RabbitTemplate rabbitTemplate;
 
     public void send(String msg) {
-        String sendMsg = "helloSender1 " + new Date();
+        String sendMsg = msg + "helloSender1 " + new Date();
         rabbitTemplate.convertAndSend("hello", sendMsg);
     }
 

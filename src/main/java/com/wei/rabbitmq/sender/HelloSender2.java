@@ -14,8 +14,8 @@ public class HelloSender2 {
     private AmqpTemplate rabbitTemplate;
 
     public void send(String msg) {
-        String sendMsg = msg + new Date();
-        this.rabbitTemplate.convertAndSend("hello", sendMsg);
+        String sendMsg = msg + "helloSender2" + new Date();
+        rabbitTemplate.convertAndSend("hello", sendMsg);
     }
 
 }

@@ -12,8 +12,8 @@ import org.springframework.stereotype.Component;
 public class HelloReceive2 {
 
     @RabbitHandler
-    public void process(String hello) {
-        System.out.println("接收器二号收到的消息是:"+hello);
+    public void process(String msg) {
+        System.out.println("接收器二号收到的消息是:" + msg);
     }
 
 }

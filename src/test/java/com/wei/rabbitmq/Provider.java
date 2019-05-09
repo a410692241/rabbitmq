@@ -1,13 +1,9 @@
 package com.wei.rabbitmq;
 
 import com.wei.rabbitmq.entity.User;
-import com.wei.rabbitmq.sender.HelloSender1;
-import com.wei.rabbitmq.sender.HelloSender2;
-import com.wei.rabbitmq.sender.MessageSender;
-import com.wei.rabbitmq.sender.ObjSender;
+import com.wei.rabbitmq.sender.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -23,6 +19,8 @@ public class Provider {
     private ObjSender objSender;
     @Autowired
     private MessageSender messageSender;
+    @Autowired
+    private UnReceiverSender unReceiverSender;
 
     /**
      *
@@ -45,7 +43,7 @@ public class Provider {
 
     /**
      * 和一对多一样,2个接收器都是均匀接收所有消息
-     * 由于每一条消息只能被一个topic消费,所以应该是2个接收器各消费50次
+     * 由于每一条消息只能被一个receiver消费,所以应该是2个接收器各消费50次
      */
     @Test
     public void manyToMany() {
@@ -56,7 +54,7 @@ public class Provider {
     }
 
     /**
-     * springboot以及完美的支持对象的发送和接收，不需要格外的配置。
+     * springboot以及完美的支持对象的发送和接收，不需要额外的配置。
      */
     @Test
     public void sendObj() {
@@ -76,5 +74,10 @@ public class Provider {
     @Test
     public void sendMsg() {
         messageSender.send1();
+    }
+
+    @Test
+    public void TopicMsg() {
+        messageSender.send2();
     }
 }

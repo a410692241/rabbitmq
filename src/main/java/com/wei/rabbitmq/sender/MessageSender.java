@@ -17,8 +17,8 @@ public class MessageSender {
     }
 
     public void send2() {
-        String context = "hi, i am messages 2";
+        String context = "send a Topic Message";
         System.out.println("Sender : " + context);
-        this.rabbitTemplate.convertAndSend("fanoutExchange", "topic.messages", context);
+        this.rabbitTemplate.convertAndSend("TopicExchange", "com.wei.topic", context);
     }
 }

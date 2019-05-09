@@ -1,10 +1,7 @@
 package com.wei.rabbitmq.configuration;
 
 import com.rabbitmq.client.AMQP;
-import org.springframework.amqp.core.Binding;
-import org.springframework.amqp.core.BindingBuilder;
-import org.springframework.amqp.core.FanoutExchange;
-import org.springframework.amqp.core.Queue;
+import org.springframework.amqp.core.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -46,5 +43,24 @@ public class FanoutRabbitConfig {
         return BindingBuilder.bind(CMessage).to(fanoutExchange);
     }
 
+    @Bean
+    TopicExchange topicExchange() {
+        return new TopicExchange("TopicExchange");
+    }
+
+    @Bean
+    Binding topicBindA(Queue AMessage, TopicExchange topicExchange) {
+        return BindingBuilder.bind(AMessage).to(topicExchange).with("*.wei.#");
+    }
+
+    @Bean
+    Binding topicBindB(Queue BMessage, TopicExchange topicExchange) {
+        return BindingBuilder.bind(BMessage).to(topicExchange).with("*.wei.#");
+    }
+
+    @Bean
+    Binding topicBindC(Queue CMessage, TopicExchange topicExchange) {
+        return BindingBuilder.bind(CMessage).to(topicExchange).with("*.wei.#");
+    }
 
 }
